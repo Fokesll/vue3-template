@@ -1,44 +1,30 @@
-
-
 <template>
-  <a-radio-group v-model:value="locale">
-    <a-radio-button key="en" :value="enUS.locale">English</a-radio-button>
-    <a-radio-button key="cn" :value="zhCN.locale">中文</a-radio-button>
-  </a-radio-group>
-  <a-config-provider :locale="locale === 'en' ? enUS : zhCN"">
+  <a-config-provider :locale="locales">
     <home />
   </a-config-provider>
-  
 </template>
 
 <script setup lang="ts">
-import enUS from 'ant-design-vue/es/locale/en_US';
-import zhCN from 'ant-design-vue/es/locale/zh_CN';
-import dayjs from 'dayjs';
-import 'dayjs/locale/zh-cn';
+import enUS from "ant-design-vue/es/locale/en_US";
+import zhCN from "ant-design-vue/es/locale/zh_CN";
+import {  computed } from "vue";
 
-import home from '@v/home.vue'
+import home from "@v/home.vue";
+import { useLangStore } from "./pinia/stores/langs";
 
-
-import { ref } from 'vue';
-
-
-const locale = ref(enUS.locale);
-dayjs.locale('en');
-
-
+const langStore = useLangStore();
+const locales = computed(() => (langStore.getLang() === "zhCN" ? zhCN : enUS));
 </script>
 
-<style  lang="scss">
-*{
+<style lang="scss">
+* {
   margin: 0;
   padding: 0;
 }
 
 html,
-body{
+body {
   height: 100%;
   width: 100%;
 }
-
 </style>

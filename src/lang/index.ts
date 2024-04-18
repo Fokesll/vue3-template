@@ -1,19 +1,21 @@
-import english from './languages/en.ts';
-import chinese from './languages/cn.ts';
+import enUS from './languages/en.ts';
+import zhCN from './languages/cn.ts';
 
 import { createI18n } from 'vue-i18n';
 
 const messages = {
-    english,
-    chinese,
+    enUS,
+    zhCN,
 }
 
-const languages = (navigator.language || 'english').toLocaleLowerCase();
+const languages = (navigator.language || 'enUS').toLocaleLowerCase();
 
 const i18n = createI18n({
-    locale:localStorage.getItem('lang') || languages.split('-')[0] || 'english',
-    fallbackLocale: 'english',
+    locale:localStorage.getItem('lang') || languages.split('-')[0] || 'enUS',
+    fallbackLocale: 'enUS',
     silentTranslationWarn:true,
+    globalInjection:true,
+    legacy:false,
     messages
 
 });

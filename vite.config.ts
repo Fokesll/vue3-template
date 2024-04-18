@@ -3,10 +3,15 @@ import vue from '@vitejs/plugin-vue'
 import path from 'path'
 import tailwindcss from  'tailwindcss'
 import autoprefixer from 'autoprefixer'
-
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [vue(),
+    createSvgIconsPlugin({
+      iconDirs:[path.resolve(__dirname, './src/assets/svgs/svg')],
+      symbolId: 'icon-[name]',
+    })
+  ],
   server:{
     proxy:{
       '/test':{

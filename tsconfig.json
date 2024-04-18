@@ -27,6 +27,7 @@
       "@v/*":["src/view/*"],
       "@r/*":["src/router/*"],
       "@c/*":["src/components/*"],
+      "@a/*":["src/assets/*"],
       
     }, 
 

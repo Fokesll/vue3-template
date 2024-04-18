@@ -12,6 +12,8 @@
           <div>{{localStore.counter}}</div>
           <button @click="handle">add</button>
 
+          <translate></translate>
+
           <div id="vditor"></div>
 
     </div>
@@ -20,6 +22,7 @@
 <script setup lang="ts">
 import { useStore } from '@s/stores/test.ts';
 import { useLangStore} from '@s/stores/langs.ts';
+import translate from '@c/language.vue'
 
 const langs = useLangStore();
 const localStore = useStore();

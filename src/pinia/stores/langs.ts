@@ -6,7 +6,7 @@ interface STATE {
 
 export const useLangStore = defineStore('langs',{
     state: () : STATE =>({
-        lang:'en'
+        lang:'enUS'
     }),
     actions:{
         setLang(lang:string){
